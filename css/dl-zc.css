@@ -1,0 +1,88 @@
+/*the section begin*/
+section{
+    width: 100%;
+    height:415px;
+    background: url("../img/background.jpg") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.s1,.s2{
+    width: 560px;
+    height: 335px;
+    background-color: rgba(210,210,210,.7);
+    position: absolute;
+    top: 38px;
+    left: 395px;
+}
+.s1>p,.s2>p{
+    font-size: 48px;
+    color: #1329b0;
+    text-align: center;
+    margin-top: 10px;
+}
+.s1>form input,.s2>form input{
+    width: 486px;
+    height: 45px;
+    border: 0;
+    font-size: 20px;
+    background-color: white;
+    margin-left: 37px;
+}
+.s1>form input:nth-child(1),.s2>form input:nth-child(1){
+    background: url("../img/user.png") no-repeat;
+}
+.s1>form input:nth-child(3){
+    background: url("../img/key.png") no-repeat;
+    margin-top:44px;
+}
+.s1>form input:nth-child(1),.s1>form input:nth-child(3)
+{
+    background-size: 8% 80%;
+    background-position: 3px 5px;
+    background-color: white;
+    padding-left: 50px;
+}
+.s1>form a,.s2>form a{
+    font-size: 14px;
+    color: #585858;
+}
+.s1>form a:hover,.s2>form a:hover{
+    color: orangered;
+    text-decoration: none;
+}
+.s1>form p:nth-child(5),.s2>form p{
+    margin:5px 0 0 37px;
+}
+.s1>form button,.s2>form button{
+    width: 215px;
+    height: 50px;
+    font-size: 30px;
+    color: #2c9d3e;
+    border: none;
+    border-radius: 5px;
+    margin: 15px 0 0 155px;
+    background-color: rgba(181,252,248,.7);
+}
+.s1>form button:hover,.s2>form button:hover{
+    color:#060696;
+}
+.s1>form p:nth-child(7){
+    margin-top: 5px;
+    margin-left: 365px;
+}
+
+/*the second section*/
+.s2>form input:nth-child(3),.s2>form input:nth-child(5){
+    background: url("../img/key.png") no-repeat;
+    margin-top: 11px;
+}
+.s2>form input:nth-child(1),.s2>form input:nth-child(3),.s2>form input:nth-child(5){
+    background-size: 8% 80%;
+    background-position: 3px 5px;
+    background-color: white;
+    padding-left: 50px;
+}
+/*the section end*/
+footer{
+    margin: 0;
+}
