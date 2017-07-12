@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>404</title>
+    <style>
+        *{margin:0; padding:0;}
+        html,body{overflow: hidden; height: 100%;position: relative;}
+        #div1{width:100%; height: 100%; margin: 10px auto; background: url(img/404-bj1.jpg) no-repeat; position: relative;}
+        #div1 span{position: absolute; background: url(img/404-bj0.jpg) no-repeat;}
+        #div2{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(200,200,200,.5);
+            z-index:100;
+        }
+        #div2>p{
+            position: absolute;
+            top: 7%;
+            left: 31%;
+            font-size: 260px;
+            font-weight: 900;
+            color: transparent;
+            text-shadow:20px 20px 80px #FFCCCC;
+            -webkit-text-stroke:8px black;
+            letter-spacing: 0.04em;
+            -webkit-text-stroke-color: #FF9999;
+        }
+        #div2>a{
+            display: block;
+            width: 200px;
+            height: 80px;
+            font-size: 24px;
+            text-decoration: none;
+            color: #6699CC;
+            font-weight: 600;
+            background-color: rgba(204,255,255,.7);
+            text-align: center;
+            line-height: 80px;
+            border: 5px solid #6699CC;
+            border-radius: 50px;
+            transition: .5s all linear;
+            position: absolute;
+            top: 60%;
+            left: 41.5%;
+        }
+        #div2>a:hover{
+            color: #CCFFCC;
+            background-color: rgba(102,153,204,.7);
+            border: 5px solid #CCFFCC;
+        }
+    </style>
+    <!--
+        下标  left  top
+         0    0    0
+         1    100  0
+         2    200  0
+         3    300  0
+         7    700  0
+
+         0    0   100
+         1    100  100
+         2    200  100
+         7    700  100
+    -->
+    <script>
+        window.onload=function ()
+        {
+            var arr=['404-bj0','404-bj1','404-bj2','404-bj3','404-bj4'];
+            var oBox=document.querySelector('#div1');
+            var R=6;
+            var C=8;
+            for (var r=0; r<R; r++)
+            {
+                for (var c=0; c<C; c++){
+                    var oSpan=document.createElement('span');
+                    oSpan.style.width=oBox.offsetWidth/C+'px';
+                    oSpan.style.height=oBox.offsetHeight/R+'px';
+                    oBox.appendChild(oSpan);
+                    oSpan.style.left=c*oSpan.offsetWidth+'px';
+                    oSpan.style.top=r*oSpan.offsetHeight+'px';
+                    oSpan.style.backgroundPosition=-c*oSpan.offsetWidth+'px '+-r*oSpan.offsetHeight+'px';
+                }
+            }
+            var now=0;
+            var bFlag=true;
+            var aSpan=oBox.children;
+
+                /*oBox.onclick=function ()
+                 {
+*/
+//            clearInterval(timer);
+            var timer=setInterval(function () {
+
+
+                bFlage=false;
+                now++;
+                for (var i=0; i<aSpan.length; i++)
+                {
+                    aSpan[i].style.transition='1s all cubic-bezier(1,-1.02,0.3,1.9)';
+                    var x=aSpan[i].offsetLeft+aSpan[i].offsetWidth-oBox.offsetWidth/2;
+                    var y=aSpan[i].offsetTop+aSpan[i].offsetHeight-oBox.offsetHeight/2;
+                    aSpan[i].style.transform='translate3d('+x+'px,'+y+'px,100px) rotateX('+rnd(0,180)+'deg) rotateY('+rnd(0,180)+'deg)';
+                    aSpan[i].style.opacity=0;
+                }
+            },3000);
+//			    };
+            //切换图片
+
+            aSpan[0].addEventListener('transitionend',function (){
+                bFlag=true;
+                for (var i=0; i<aSpan.length; i++){
+                    aSpan[i].style.transition='none';
+                    aSpan[i].style.transform='translate3d(0px,0px,100px) rotateX(0deg) rotateY(0deg)';
+                    aSpan[i].style.opacity=1;
+                    aSpan[i].style.backgroundImage='url(img/404-bj'+now%arr.length+'.jpg)';
+                    oBox.style.backgroundImage='url(img/404-bj'+(now+1)%arr.length+'.jpg)';
+                }
+            },false);
+
+            function rnd(m,n)
+            {
+                return Math.floor(Math.random()*(m-n)+n);
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2">
+    <p>404</p>
+    <a href="index.html">返回起始页</a>
+</div>
+
+</body>
+</html>
